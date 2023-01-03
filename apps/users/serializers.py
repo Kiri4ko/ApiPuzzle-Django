@@ -16,7 +16,7 @@ class UserRegistrSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = [
-            'full_name', 'nickname',
+            'full_name',
             'email', 'phone',
             'user_status',
             'password', 'password_rep',
@@ -26,7 +26,6 @@ class UserRegistrSerializer(serializers.ModelSerializer):
     def save(self, *args, **kwargs):
         user = User(
             full_name=self.validated_data['full_name'],  # Name and Surname
-            nickname=self.validated_data['nickname'],  # Nickname
             email=self.validated_data['email'],  # Email
             phone=self.validated_data['phone'],  # Phone
             user_status=self.validated_data['user_status'],  # User status
