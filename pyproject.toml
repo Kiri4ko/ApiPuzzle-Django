@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "djangoCore"
+version = "0.1.0"
+description = "Example for your projects"
+authors = ["Dmitri Kirichko"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+djangorestframework = "^3.14.0"
+django-cors-headers = "^3.13.0"
+psycopg2-binary = "^2.9.5"
+django-rest-swagger = "^2.2.0"
+python-dotenv = "^0.21.0"
+django-rest-auth = "^0.9.5"
+flake8 = "^6.0.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

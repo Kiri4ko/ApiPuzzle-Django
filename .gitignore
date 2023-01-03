@@ -1,0 +1,12 @@
+.DS_Store
+.env
+.idea/
+apps/__pycache__/
+apps/auth_reg/__pycache__/
+apps/auth_reg/migrations/__pycache__/
+apps/swagger/__pycache__/
+apps/swagger/migrations/__pycache__/
+apps/users/__pycache__/
+apps/users/migrations/__pycache__/
+config/__pycache__/
+
