@@ -16,7 +16,8 @@ from datetime import timedelta
 import environ
 from pathlib import Path
 
-import django_heroku
+# Configure Django App for Heroku
+import django_on_heroku
 
 env = environ.Env(
     # set casting, default value
@@ -225,4 +226,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-django_heroku.settings(locals())
+# Configure Django App for Heroku.
+django_on_heroku.settings(locals())
