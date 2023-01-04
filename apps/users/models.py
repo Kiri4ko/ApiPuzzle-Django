@@ -74,8 +74,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     phone = PhoneNumberField(unique=True, max_length=16)  # Phone number
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['full_name', 'phone', 'is_active', 'user_status',
-    ]  # List of field names for Superuser
+    REQUIRED_FIELDS = ['full_name', 'phone', 'is_active', 'user_status']  # List of field names for Superuser
 
     objects = CustomUserManager()
 
