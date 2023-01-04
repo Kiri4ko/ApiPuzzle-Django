@@ -161,7 +161,7 @@ DJOSER = {
     'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
     'PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND': True,
     'ACTIVATION_URL': '#/activate/{uid}/{token}',
-    'SEND_ACTIVATION_EMAIL': False,
+    'SEND_ACTIVATION_EMAIL': True,
     'PERMISSIONS': {
         'user_create': ['rest_framework.permissions.IsAuthenticated', 'rest_framework.permissions.IsAdminUser'],
         'user_list': ['rest_framework.permissions.IsAuthenticated', 'rest_framework.permissions.IsAdminUser'],
