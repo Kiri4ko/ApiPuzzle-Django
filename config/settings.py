@@ -143,12 +143,12 @@ SIMPLE_JWT = {
 
 # smtp
 DEFAULT_FROM_EMAIL = 'apipuzzle.official@gmail.com'
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'apipuzzle.official@gmail.com'
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = 465
+EMAIL_PORT = 587
 SERVER_EMAIL = EMAIL_HOST_USER
 
 DOMAIN = env('DOMAIN')  # For send email Djoser
