@@ -38,10 +38,8 @@ class UserRegistrSerializer(serializers.ModelSerializer):
         # Checking if passwords match
         if password != password_rep:
             raise serializers.ValidationError({password: "Password doesn't match!"})
-
         # Django default password validation
         validate_password(password=password_rep)
-
         # Save the password
         user.set_password(password)
         # Save the user
