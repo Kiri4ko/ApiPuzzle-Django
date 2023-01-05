@@ -4,7 +4,7 @@
 # from rest_framework.response import Response
 # # Connect data to create
 # from rest_framework.generics import CreateAPIView
-# # # Connect access rights
+# # Connect access rights
 # from rest_framework.permissions import IsAuthenticated
 # # Connect the User model
 # from .models import User
@@ -37,4 +37,3 @@
 #             data = serializer.errors
 #             # Response error
 #             return Response(data)
-#
