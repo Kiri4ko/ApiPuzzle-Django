@@ -56,7 +56,6 @@ class CustomUserManager(BaseUserManager):
 
 # Creating the User class
 class User(AbstractBaseUser, PermissionsMixin):
-    id = models.AutoField(primary_key=True, unique=True)  # ID
     full_name = models.CharField(max_length=160)  # Name and Surname
     email = models.EmailField(max_length=150, unique=True)  # Email
     is_active = models.BooleanField(default=False)  # Activation status
@@ -70,7 +69,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         validators=[MinLengthValidator(2)]
     )  # User status
     is_staff = models.BooleanField(default=False)  # Administrator status
-    date_joined = models.DateTimeField(name='registered', auto_now_add=True)  # Date registration
+    date_joined = models.DateTimeField(name='registered', auto_now_add=True, editable=True)  # Date registration
     phone = PhoneNumberField(unique=True, max_length=16)  # Phone number
 
     USERNAME_FIELD = 'email'

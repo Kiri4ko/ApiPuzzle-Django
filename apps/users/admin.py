@@ -11,3 +11,4 @@ class UserAdmin(admin.ModelAdmin):
     list_filter = ('is_staff', 'is_active', 'user_status',)
     list_display_links = ('full_name', 'email',)
     search_fields = ('email', 'full_name', 'user_status',)
+    readonly_fields = ('last_login', 'registered',)
