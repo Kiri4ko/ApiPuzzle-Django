@@ -4,6 +4,7 @@ from django.contrib.auth.models import (
 )
 from phonenumber_field.modelfields import PhoneNumberField
 from django.core.validators import MinLengthValidator
+from apps.auth_reg.validators import validate_fullname
 
 
 # User manager class
@@ -56,7 +57,7 @@ class CustomUserManager(BaseUserManager):
 
 # Creating the User class
 class User(AbstractBaseUser, PermissionsMixin):
-    full_name = models.CharField(max_length=160)  # Name and Surname
+    full_name = models.CharField(max_length=160, validators=[validate_fullname])  # Name and Surname
     email = models.EmailField(max_length=150, unique=True)  # Email
     is_active = models.BooleanField(default=False)  # Activation status
     user_status = models.CharField(

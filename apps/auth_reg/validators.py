@@ -1,8 +1,10 @@
 from django.contrib.auth.password_validation import get_default_password_validators
 from django.core.exceptions import ValidationError
+from django.core.validators import RegexValidator
 from rest_framework import serializers
 
 
+# Password validation
 def validate_password(password, user=None, password_validators=None):
     """
     Validate that the password meets all validator requirements.
@@ -20,3 +22,10 @@ def validate_password(password, user=None, password_validators=None):
             errors.append(error)
     if errors:
         raise serializers.ValidationError({password: errors})
+
+
+# Full name validation
+validate_fullname = RegexValidator(
+    r"^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]*$",
+    "Only alphabetic and (,.-') characters are allowed."
+)
