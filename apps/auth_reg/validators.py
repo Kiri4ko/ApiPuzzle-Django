@@ -26,6 +26,6 @@ def validate_password(password, user=None, password_validators=None):
 
 # Full name validation
 validate_fullname = RegexValidator(
-    r'^[a-zA-Z]*$',
+    r'^[a-zA-Z ]*$',
     'Only alphabetic (A-Z) characters are allowed.'
 )

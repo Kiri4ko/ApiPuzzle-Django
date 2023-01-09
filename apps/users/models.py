@@ -19,6 +19,7 @@ class CustomUserManager(BaseUserManager):
         # Checking phone
         if not phone:
             raise ValueError("You have not entered a phone number!")
+        # Checking user status
         if not user_status:
             raise ValueError("You have not entered a user status: Admin, CEO, CTO, Designer,\
               Product Owner, Programmer, Project Manager, QA!")
@@ -68,7 +69,7 @@ class User(AbstractBaseUser, PermissionsMixin):
             ('QA', 'QA'),
         ),
         validators=[MinLengthValidator(2)]
-    )  # User status
+    )
     is_staff = models.BooleanField(default=False)  # Administrator status
     date_joined = models.DateTimeField(name='registered', auto_now_add=True, editable=True)  # Date registration
     phone = PhoneNumberField(unique=True, max_length=16)  # Phone number
@@ -82,6 +83,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         return User.__name__
 
     class Meta:
-        ordering = ['email']
+        ordering = ('email',)
         verbose_name = 'User'
         verbose_name_plural = 'Users'
