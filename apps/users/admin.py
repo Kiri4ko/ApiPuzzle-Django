@@ -5,7 +5,8 @@ from django.contrib.auth.admin import UserAdmin
 
 
 @admin.register(User)
-class MyUserAdmin(admin.ModelAdmin):
+class MyUserAdmin(UserAdmin):
+    add_form_template = "html/admin/add_form.html"
     list_display = (
         'id', 'full_name', 'email', 'phone', 'user_status',
         'is_active', 'is_staff', 'group', 'registered', 'last_login',
@@ -16,6 +17,14 @@ class MyUserAdmin(admin.ModelAdmin):
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         (_('Important Dates'), {'fields': ('registered', 'last_login',)}),
         (_('Secret Data'), {'fields': ('password',)}),
+    )
+
+    add_fieldsets = (
+        (None, {'fields': ('id',)}),
+        (_('Personal Info'), {'fields': ('full_name', 'email', 'phone', 'user_status')}),
+        (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
+        (_('Important Dates'), {'fields': ('registered',)}),
+        (_('Secret Data'), {'fields': ("password1", "password2")}),
     )
     readonly_fields = ('id', 'registered')
     list_filter = ('user_status', 'groups', 'is_staff', 'is_active')
@@ -33,9 +42,3 @@ class MyUserAdmin(admin.ModelAdmin):
     group.short_description = 'Groups'
 
     ordering = ('email',)
-
-    # fields = (
-    #     'id', 'full_name', 'email', 'phone', 'user_status',
-    #     'is_active', 'is_staff', 'is_superuser', 'groups',
-    #     'user_permissions', 'registered', 'last_login', 'password',
-    # )
