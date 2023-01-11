@@ -11,7 +11,6 @@
 # # Connect the UserRegistrSerializer
 # from .serializers import UserRegistrSerializer
 #
-#
 # # Create class RegistrUserView
 #
 # class RegistrUserView(CreateAPIView):
