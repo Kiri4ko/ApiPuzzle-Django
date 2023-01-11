@@ -16,7 +16,7 @@ class MyUserAdmin(UserAdmin):
         (_('Personal Info'), {'fields': ('full_name', 'email', 'phone', 'user_status')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         (_('Important Dates'), {'fields': ('registered', 'last_login',)}),
-        (_('Secret Data'), {'fields': ('password',)}),
+        (_('Security'), {'fields': ('password',)}),
     )
 
     add_fieldsets = (
@@ -24,7 +24,7 @@ class MyUserAdmin(UserAdmin):
         (_('Personal Info'), {'fields': ('full_name', 'email', 'phone', 'user_status')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         (_('Important Dates'), {'fields': ('registered',)}),
-        (_('Secret Data'), {'fields': ("password1", "password2")}),
+        (_('Security'), {'fields': ("password1", "password2")}),
     )
     readonly_fields = ('id', 'registered')
     list_filter = ('user_status', 'groups', 'is_staff', 'is_active')
@@ -40,5 +40,4 @@ class MyUserAdmin(UserAdmin):
         return '\n'.join([name.get('name') for name in user_group])
 
     group.short_description = 'Groups'
-
     ordering = ('email',)
