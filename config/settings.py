@@ -65,6 +65,8 @@ INSTALLED_APPS = [
     'apps.auth_reg.apps.AuthRegConfig',
     'apps.swagger.apps.SwaggerConfig',
     'apps.users.apps.UsersConfig',
+    'apps.projects.apps.ProjectsConfig',
+    'apps.projects.planning.apps.PlanningConfig',
 ]
 
 # Cors

@@ -11,4 +11,9 @@ apps/users/__pycache__/
 apps/users/migrations/__pycache__/
 config/__pycache__/
 apps/users/migrations/
+apps/projects/__pycache__/
+apps/projects/migrations/
+apps/projects/planning/__pycache__/
+apps/projects/planning/migrations/
+apps/projects/planning/migrations/__pycache__/
 
