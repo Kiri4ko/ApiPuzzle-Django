@@ -34,13 +34,13 @@ jobs:
         python manage.py migrate
         python manage.py test
       env:
-        DEBUG: True
+        DEBUG: ${{ secrets.DEBUG }}
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        EMAIL_HOST_PASSWORD: emailhostpassword
-        DOMAIN: domain.com
-        SITE_NAME: sitemane
-        DB_NAME: dbname
-        DB_USER: user
-        DB_PASSWORD: password
-        DB_HOST: dbhost
-        DB_PORT: 5432
+        EMAIL_HOST_PASSWORD: ${{ EMAIL_HOST_PASSWORD }}
+        DOMAIN: ${{ DOMAIN }}
+        SITE_NAME: ${{ SITE_NAME }}
+        DB_NAME: ${{ DB_NAME }}
+        DB_USER: ${{ DB_USER }}
+        DB_PASSWORD: ${{ DB_PASSWORD }}
+        DB_HOST: ${{ DB_HOST }}
+        DB_PORT: ${{ DB_PORT }}
