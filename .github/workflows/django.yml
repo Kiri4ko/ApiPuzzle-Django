@@ -34,4 +34,13 @@ jobs:
         python manage.py migrate
         python manage.py test
       env:
-        SECRET_KEY: key_for_github_actions
+        DEBUG: True
+        SECRET_KEY: secret_key_for_github_actions
+        EMAIL_HOST_PASSWORD: emailhostpassword
+        DOMAIN: domain.com
+        SITE_NAME: sitemane
+        DB_NAME: dbname
+        DB_USER: user
+        DB_PASSWORD: password
+        DB_HOST: dbhost
+        DB_PORT: 5432
