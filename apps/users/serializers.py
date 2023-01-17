@@ -1,5 +1,6 @@
-from apps.auth_reg.validators import validate_password
 from rest_framework import serializers
+
+from apps.auth_reg.validators import validate_password
 from .models import User
 
 

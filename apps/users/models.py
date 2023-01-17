@@ -1,9 +1,10 @@
-from django.db import models
 from django.contrib.auth.models import (
     AbstractBaseUser, BaseUserManager, PermissionsMixin,
 )
-from phonenumber_field.modelfields import PhoneNumberField
 from django.core.validators import MinLengthValidator
+from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
+
 from apps.auth_reg.validators import validate_fullname
 
 

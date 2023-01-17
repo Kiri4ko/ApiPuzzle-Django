@@ -12,12 +12,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 from datetime import timedelta
-
-import environ
 from pathlib import Path
 
 # Configure Django App for Heroku
 import django_on_heroku
+import environ
 
 env = environ.Env(
     # set casting, default value

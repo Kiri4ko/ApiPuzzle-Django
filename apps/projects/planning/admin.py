@@ -1,5 +1,6 @@
-from apps.projects.planning.models import Planning
 from django.contrib import admin
+
+from apps.projects.planning.models import Planning
 
 
 @admin.register(Planning)
