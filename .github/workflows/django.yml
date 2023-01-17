@@ -35,7 +35,7 @@ jobs:
         python manage.py test
       env:
         DEBUG: True
-        SECRET_KEY: secret_key_for_github_actions
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
         EMAIL_HOST_PASSWORD: emailhostpassword
         DOMAIN: domain.com
         SITE_NAME: sitemane
