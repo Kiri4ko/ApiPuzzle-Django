@@ -66,6 +66,8 @@ INSTALLED_APPS = [
     'apps.users.apps.UsersConfig',
     'apps.projects.apps.ProjectsConfig',
     'apps.projects.planning.apps.PlanningConfig',
+    'apps.user_profile.apps.UserProfileConfig',
+    'apps.user_profile.user_company.apps.UserCompanyConfig',
 ]
 
 # Cors
@@ -212,6 +214,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
+DATE_FORMAT = 'd-m-Y'
+
+DATE_INPUT_FORMATS = ['%d-%m-%Y']
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -220,11 +226,16 @@ USE_I18N = True
 
 USE_TZ = True
 
+USE_L10N = False
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

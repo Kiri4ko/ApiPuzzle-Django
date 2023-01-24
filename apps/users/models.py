@@ -5,12 +5,12 @@ from django.core.validators import MinLengthValidator
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
-from apps.auth_reg.validators import validate_fullname
+from apps.auth_reg.validators import validate_generic_latin
 
 
 # User manager class
 class CustomUserManager(BaseUserManager):
-    def _create_user(self, email, full_name, password, phone, user_status, **extra_fields):
+    def _create_user(self, email, full_name, password, phone, role, **extra_fields):
         # Checking email
         if not email:
             raise ValueError("You have not entered an email!")
@@ -21,15 +21,15 @@ class CustomUserManager(BaseUserManager):
         if not phone:
             raise ValueError("You have not entered a phone number!")
         # Checking user status
-        if not user_status:
-            raise ValueError("You have not entered a user status: Admin, CEO, CTO, Designer,\
+        if not role:
+            raise ValueError("You have not entered a role in the project: Admin, CEO, CTO, Designer,\
               Product Owner, Programmer, Project Manager, QA!")
         # Create a user
         user = self.model(
             email=self.normalize_email(email),
             phone=phone,
             full_name=full_name,
-            user_status=user_status,
+            role=role,
             **extra_fields,
         )
         # Save the password
@@ -38,14 +38,14 @@ class CustomUserManager(BaseUserManager):
         return user
 
     # Creating a regular user
-    def create_user(self, email, full_name, phone, user_status, password=None, **extra_fields):
+    def create_user(self, email, full_name, phone, role, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', False),
         extra_fields.setdefault('is_superuser', False)
         extra_fields.setdefault('is_active', False)
-        return self._create_user(email, full_name, phone, user_status, password, **extra_fields)
+        return self._create_user(email, full_name, phone, role, password, **extra_fields)
 
     # Creating a site administrator
-    def create_superuser(self, email, full_name, password, phone, user_status, **extra_fields):
+    def create_superuser(self, email, full_name, password, phone, role, **extra_fields):
         extra_fields.setdefault('is_staff', True),
         extra_fields.setdefault('is_superuser', True),
         extra_fields.setdefault('is_active', False)
@@ -54,15 +54,15 @@ class CustomUserManager(BaseUserManager):
             raise ValueError('Superuser must have is_staff=True.')
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('Superuser must have is_superuser=True.')
-        return self._create_user(email, full_name, password, phone, user_status, **extra_fields)
+        return self._create_user(email, full_name, password, phone, role, **extra_fields)
 
 
 # Creating the User class
 class User(AbstractBaseUser, PermissionsMixin):
-    full_name = models.CharField(max_length=160, validators=[validate_fullname])  # Name and Surname
+    full_name = models.CharField(max_length=160, validators=[validate_generic_latin])  # Name and Surname
     email = models.EmailField(max_length=150, unique=True)  # Email
     is_active = models.BooleanField(default=False)  # Activation status
-    user_status = models.CharField(
+    role = models.CharField(
         max_length=15, choices=(
             ('Admin', 'Admin'), ('CEO', 'CEO'), ('CTO', 'CTO'),
             ('Designer', 'Designer'), ('Product Owner', 'Product Owner'),
@@ -76,7 +76,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     phone = PhoneNumberField(unique=True, max_length=16)  # Phone number
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['full_name', 'phone', 'is_active', 'user_status']  # List of field names for Superuser
+    REQUIRED_FIELDS = ['full_name', 'phone', 'is_active', 'role']  # List of field names for Superuser
 
     objects = CustomUserManager()
 

@@ -9,12 +9,12 @@ from apps.users.models import User
 class MyUserAdmin(UserAdmin):
     add_form_template = "html/admin/add_form.html"
     list_display = (
-        'id', 'full_name', 'email', 'phone', 'user_status',
+        'id', 'full_name', 'email', 'phone', 'role',
         'is_active', 'is_staff', 'group', 'registered', 'last_login',
     )
     fieldsets = (
         (None, {'fields': ('id',)}),
-        (_('Personal Info'), {'fields': ('full_name', 'email', 'phone', 'user_status')}),
+        (_('Personal Info'), {'fields': ('full_name', 'email', 'phone', 'role')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         (_('Important Dates'), {'fields': ('registered', 'last_login',)}),
         (_('Security'), {'fields': ('password',)}),
@@ -22,13 +22,13 @@ class MyUserAdmin(UserAdmin):
 
     add_fieldsets = (
         (None, {'fields': ('id',)}),
-        (_('Personal Info'), {'fields': ('full_name', 'email', 'phone', 'user_status')}),
+        (_('Personal Info'), {'fields': ('full_name', 'email', 'phone', 'role')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         (_('Important Dates'), {'fields': ('registered',)}),
         (_('Security'), {'fields': ("password1", "password2")}),
     )
     readonly_fields = ('id', 'registered')
-    list_filter = ('user_status', 'groups', 'is_staff', 'is_active')
+    list_filter = ('role', 'groups', 'is_staff', 'is_active')
     list_display_links = ('id', 'email', 'full_name')
     search_fields = ('email', 'full_name', 'user_status',)
     list_editable = ('is_staff', 'is_active')

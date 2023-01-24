@@ -1,8 +1,10 @@
 run:
-	python manage.py runserver
+	python manage.py runserver $(port)
 migrate:
 	python manage.py makemigrations
 	python manage.py migrate
+startapp:
+	python manage.py startapp $(name)
 superuser:
 	python manage.py createsuperuser
 generate-dependencies:
