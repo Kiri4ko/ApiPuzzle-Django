@@ -1,5 +1,3 @@
-from os import path
-
 from rest_framework import routers
 
 from .user_company.views import HeadCompanyView
