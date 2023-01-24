@@ -16,4 +16,11 @@ apps/projects/migrations/
 apps/projects/planning/__pycache__/
 apps/projects/planning/migrations/
 apps/projects/planning/migrations/__pycache__/
+__pycache__/
+apps/user_profile/__pycache__/
+apps/user_profile/migrations/
+apps/user_profile/user_company/__pycache__/
+apps/user_profile/user_company/migrations/
+media/logo/company/
+
 
