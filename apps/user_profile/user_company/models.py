@@ -1,4 +1,4 @@
-# from apps.users.models import User
+from apps.users.models import User
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator, URLValidator
 from apps.auth_reg.validators import (
@@ -16,7 +16,7 @@ class HeadCompany(models.Model):
     logo = models.ImageField(
         upload_to=change_filename, max_length=200,
         default='logo/company/default/white_background.jpg',
-        validators=[validate_image_extension, validate_image_resolution]
+        validators=[validate_image_extension, validate_image_resolution], null=True
     )
     website = models.URLField(max_length=200, blank=True, null=True)
     tagline = models.CharField(max_length=255)
@@ -42,7 +42,7 @@ class HeadCompany(models.Model):
     contact_expert = models.CharField(max_length=255, validators=[validate_generic_alphanumeric_symbols])
     links_case = models.TextField(max_length=600, validators=[URLValidator()])
     client_desc = models.TextField(max_length=600, name='client_describe')
-    # employee = models.ManyToManyField(User, related_name='company')
+    employee = models.ManyToManyField(User, related_name='company', null=True)
 
     def __repr__(self):
         return HeadCompany.__name__

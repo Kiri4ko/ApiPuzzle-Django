@@ -35,8 +35,7 @@ class HeadCompanySerializer(serializers.ModelSerializer):
             contact_expert=self.validated_data['contact_expert'],
             links_case=self.validated_data['links_case'],
             client_describe=self.validated_data['client_describe'],
-            # employee=self.validated_data['employee'],
-
+            employee=self.validated_data['employee'],
         )
         # Save the company
         company.save()
