@@ -1,4 +1,4 @@
-from apps.users.models import User
+# from apps.users.models import User
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator, URLValidator
 from apps.auth_reg.validators import (
@@ -42,7 +42,7 @@ class HeadCompany(models.Model):
     contact_expert = models.CharField(max_length=255, validators=[validate_generic_alphanumeric_symbols])
     links_case = models.TextField(max_length=600, validators=[URLValidator()])
     client_desc = models.TextField(max_length=600, name='client_describe')
-    employee = models.ManyToManyField(User, related_name='company')
+    # employee = models.ManyToManyField(User, related_name='company')
 
     def __repr__(self):
         return HeadCompany.__name__
