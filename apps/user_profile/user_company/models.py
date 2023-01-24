@@ -1,4 +1,4 @@
-from apps.users.models import User
+# from apps.users.models import User
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator, URLValidator
 from apps.auth_reg.validators import (
