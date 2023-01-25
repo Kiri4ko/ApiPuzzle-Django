@@ -115,7 +115,10 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-    ]
+    ],
+    'DATETIME_FORMAT': "%m/%d/%Y %H:%M:%S",
+    'DATE_FORMAT': "%m.%d.%Y",
+    'DATE_INPUT_FORMATS': ['%d.%m.%Y'],
 }
 
 SIMPLE_JWT = {
