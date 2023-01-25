@@ -12,6 +12,12 @@ from apps.auth_reg.validators import (
 
 # Create model user company.
 class HeadCompany(models.Model):
+    USD = 'USD'
+    EUR = 'EUR'
+    CURRENCIES = [
+        (USD, 'Dollars'),
+        (EUR, 'Euro'),
+    ]
     company_name = models.CharField(max_length=255, validators=[validate_company_name], unique=True)
     logo = models.ImageField(
         upload_to=change_filename, max_length=200,
@@ -28,7 +34,9 @@ class HeadCompany(models.Model):
     desc_f = models.TextField(max_length=1200, validators=[validate_generic_alphanumeric_symbols],
                               name='full_description')
     rate = models.DecimalField(max_digits=7, decimal_places=2, name='average_hourly_rate')
+    currency_rate = models.CharField(max_length=3, choices=CURRENCIES, default=USD)
     min_budget = models.DecimalField(max_digits=8, decimal_places=2, name='minimum_project_budget')
+    currency_budget = models.CharField(max_length=3, choices=CURRENCIES, default=USD)
     team_size = models.IntegerField(
         validators=[
             MinValueValidator(1, message='Minimum = 1'),
@@ -42,19 +50,12 @@ class HeadCompany(models.Model):
     contact_expert = models.CharField(max_length=255, validators=[validate_generic_alphanumeric_symbols])
     links_case = models.TextField(max_length=600, validators=[URLValidator()])
     client_desc = models.TextField(max_length=600, name='client_describe')
-    employee = models.ManyToManyField(User, related_name='company', null=True)
+    employees = models.ManyToManyField(User, related_name='company')
 
     def __repr__(self):
-        return HeadCompany.__name__
+        return self.company_name
 
     class Meta:
         ordering = ('company_name',)
         verbose_name = 'Company'
         verbose_name_plural = 'Companies'
-
-    # #  Links case list
-    # def set_urls(self, urls_list):
-    #     self.links_case = ",".join(urls_list)
-    #
-    # def get_urls(self):
-    #     return self.links_case.split(",")
