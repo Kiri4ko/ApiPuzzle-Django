@@ -1,1 +1,1 @@
-from head_company import *
+from .head_company import HeadCompany
