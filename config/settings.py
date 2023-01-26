@@ -21,7 +21,8 @@ import dj_database_url
 
 env = environ.Env(
     # set casting, default value
-    DEBUG=(bool, False)
+    DEBUG=(bool, False),
+    ALLOWED_HOSTS=(list, ['127.0.0.1']),
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
