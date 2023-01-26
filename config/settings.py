@@ -193,7 +193,7 @@ DATABASES = {
     #     }
 }
 
-DATABASE_ROUTERS = ['apps.routers.get_current_db']
+# DATABASE_ROUTERS = ['apps.routers.get_current_db']
 
 AUTH_USER_MODEL = 'users.User'
 
