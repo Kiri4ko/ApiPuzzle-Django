@@ -1,6 +1,6 @@
 from apps.users.models import User
 from django.db import models
-from django.core.validators import MaxValueValidator, MinValueValidator, URLValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from apps.auth_reg.validators import (
     validate_company_name, validate_select_industries_name,
     validate_generic_alphanumeric_symbols, validate_no_future_date,
@@ -10,7 +10,7 @@ from apps.auth_reg.validators import (
 )
 
 
-# Create model user company.
+# Create model head company.
 class HeadCompany(models.Model):
     USD = 'USD'
     EUR = 'EUR'
@@ -48,7 +48,7 @@ class HeadCompany(models.Model):
     clients_focus = models.TextField(max_length=600, blank=True, null=True, validators=[validate_generic_latin_symbols])
     contact_marketing = models.CharField(max_length=255, validators=[validate_generic_alphanumeric_symbols])
     contact_expert = models.CharField(max_length=255, validators=[validate_generic_alphanumeric_symbols])
-    links_case = models.TextField(max_length=600, validators=[URLValidator()])
+    links_case = models.TextField(max_length=600)
     client_desc = models.TextField(max_length=600, name='client_describe')
     employees = models.ManyToManyField(User, related_name='companies')
 
