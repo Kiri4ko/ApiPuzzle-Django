@@ -186,7 +186,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 if 'apipuzzle-be.herokuapp.com' in os.environ.get('ALLOWED_HOSTS', ''):
     DATABASES = {
         'default':
-            dj_database_url.config()
+            dj_database_url.config(conn_max_age=500)
     }
 else:
     DATABASES = {
