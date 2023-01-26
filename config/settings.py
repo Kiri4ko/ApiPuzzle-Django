@@ -21,7 +21,8 @@ import dj_database_url
 
 env = environ.Env(
     # set casting, default value
-    DEBUG=(bool, False)
+    DEBUG=(bool, False),
+    ALLOWED_HOSTS=(list, ['127.0.0.1']),
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -39,7 +40,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['apipuzzle-be.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
 # Application definition
 
@@ -183,13 +184,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 # Selection Database
 if 'apipuzzle-be.herokuapp.com' in os.environ.get('ALLOWED_HOSTS', ''):
-    print('HEROKU', os.environ.get('ALLOWED_HOSTS', ''))
+    print('HEROKU', os.environ.get('ALLOWED_HOSTS'))
     DATABASES = {
         'default':
             dj_database_url.config(conn_max_age=500),
     }
 else:
-    print('LOCAL', os.environ.get('ALLOWED_HOSTS', ''))
+    print('LOCAL', os.environ.get('ALLOWED_HOSTS'))
     DATABASES = {
         'default':
             {
@@ -197,8 +198,6 @@ else:
                 'NAME': BASE_DIR / 'db.sqlite3',
             }
     }
-
-# DATABASE_ROUTERS = ['apps.routers.get_current_db']
 
 AUTH_USER_MODEL = 'users.User'
 
