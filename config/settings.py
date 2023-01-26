@@ -188,7 +188,7 @@ if 'apipuzzle-be.herokuapp.com' in os.environ.get('ALLOWED_HOSTS'):
         'default':
             dj_database_url.config(conn_max_age=500),
     }
-elif '127.0.0.1' in os.environ.get('ALLOWED_HOSTS'):
+else:
     print('LOCAL', os.environ.get('ALLOWED_HOSTS'))
     DATABASES = {
         'default':
