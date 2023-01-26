@@ -10,15 +10,9 @@ apps/swagger/migrations/__pycache__/
 apps/users/__pycache__/
 apps/users/migrations/__pycache__/
 config/__pycache__/
-apps/users/migrations/
 apps/projects/__pycache__/
 apps/projects/planning/__pycache__/
 apps/projects/planning/migrations/__pycache__/
-apps/projects/planning/migrations/
-apps/projects/migrations/
 __pycache__/
 apps/user_profile/__pycache__/
-apps/user_profile/migrations/
-apps/auth_reg/migrations/
 apps/user_profile/user_company/__pycache__/
-apps/user_profile/user_company/migrations/
