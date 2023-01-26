@@ -184,13 +184,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 # Selection Database
 if 'apipuzzle-be.herokuapp.com' in os.environ.get('ALLOWED_HOSTS', ''):
-    print('HEROKU', os.environ.get('ALLOWED_HOSTS'))
     DATABASES = {
         'default':
-            dj_database_url.config(conn_max_age=500),
+            dj_database_url.config()
     }
 else:
-    print('LOCAL', os.environ.get('ALLOWED_HOSTS'))
     DATABASES = {
         'default':
             {
