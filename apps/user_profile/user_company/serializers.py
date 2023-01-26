@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import HeadCompany
+from .models.head_company import HeadCompany
 
 
 # Create class HeadCompanySerializer
