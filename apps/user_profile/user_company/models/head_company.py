@@ -3,10 +3,12 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from apps.auth_reg.validators import (
     validate_company_name, validate_select_industries_name,
+    validate_image_resolution, change_filename_logo,
+)
+from apps.common.general_validators import (
     validate_generic_alphanumeric_symbols, validate_no_future_date,
     validate_generic_latin_symbols, validate_generic_latin,
-    validate_image_extension, validate_image_resolution,
-    change_filename,
+    validate_image_extension,
 )
 
 
@@ -21,7 +23,7 @@ class HeadCompany(models.Model):
     ]
     company_name = models.CharField(max_length=255, validators=[validate_company_name], unique=True)
     logo = models.ImageField(
-        upload_to=change_filename, max_length=200,
+        upload_to=change_filename_logo, max_length=200,
         default='logo/company/default/white_background.jpg',
         validators=[validate_image_extension, validate_image_resolution], null=True
     )

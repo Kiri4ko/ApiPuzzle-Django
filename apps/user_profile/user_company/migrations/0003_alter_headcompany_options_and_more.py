@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ('user_company', '0002_initial'),
@@ -15,7 +14,8 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='headcompany',
-            options={'ordering': ('company_name',), 'verbose_name': 'Head company', 'verbose_name_plural': 'Head companies'},
+            options={'ordering': ('company_name',), 'verbose_name': 'Head company',
+                     'verbose_name_plural': 'Head companies'},
         ),
         migrations.AlterField(
             model_name='headcompany',
@@ -26,17 +26,38 @@ class Migration(migrations.Migration):
             name='POCompany',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('company_name', models.CharField(max_length=255, unique=True, validators=[django.core.validators.RegexValidator(message="Only alphanumeric (A-Z, 0-9) and symbols -_:&.' characters are allowed.", regex="^[\\w\\-_:&\\.\\'\\s]*$")])),
-                ('company_size', models.CharField(choices=[('Startup', 'Startup'), ('Small', 'Small (up to 50 people)'), ('Middle', 'Mid-size (up 200 people)'), ('Large', 'Large (more than 200 people)')], max_length=7)),
-                ('company_industry', models.CharField(max_length=255, validators=[django.core.validators.RegexValidator(message='Invalid characters, the string should start with letters (A-Z) only and can be used symbols ().', regex='^[a-zA-Z]+[a-zA-Z()\\s]*$')])),
-                ('development_team', models.CharField(max_length=255, validators=[django.core.validators.RegexValidator(message='Only alphanumeric (A-Z, 0-9) and symbols characters are allowed.', regex='^[\\w\\W]*$')])),
-                ('use_outsourcing', models.CharField(max_length=255, validators=[django.core.validators.RegexValidator(message='Only alphanumeric (A-Z, 0-9) and symbols characters are allowed.', regex='^[\\w\\W]*$')])),
-                ('description_project', models.TextField(max_length=600, validators=[django.core.validators.RegexValidator(message='Only alphanumeric (A-Z, 0-9) and symbols characters are allowed.', regex='^[\\w\\W]*$')])),
-                ('business_requirements', models.CharField(max_length=255, validators=[django.core.validators.RegexValidator(message='Only alphanumeric (A-Z, 0-9) and symbols characters are allowed.', regex='^[\\w\\W]*$')])),
-                ('technological_stack', models.CharField(max_length=255, validators=[django.core.validators.RegexValidator(message='Only alphanumeric (A-Z, 0-9) and symbols characters are allowed.', regex='^[\\w\\W]*$')])),
+                ('company_name', models.CharField(max_length=255, unique=True, validators=[
+                    django.core.validators.RegexValidator(
+                        message="Only alphanumeric (A-Z, 0-9) and symbols -_:&.' characters are allowed.",
+                        regex="^[\\w\\-_:&\\.\\'\\s]*$")])),
+                ('company_size', models.CharField(choices=[('Startup', 'Startup'), ('Small', 'Small (up to 50 people)'),
+                                                           ('Middle', 'Mid-size (up 200 people)'),
+                                                           ('Large', 'Large (more than 200 people)')], max_length=7)),
+                ('company_industry', models.CharField(max_length=255, validators=[django.core.validators.RegexValidator(
+                    message='Invalid characters, the string should start with letters (A-Z) only and can be used symbols ().',
+                    regex='^[a-zA-Z]+[a-zA-Z()\\s]*$')])),
+                ('development_team', models.CharField(max_length=255, validators=[django.core.validators.RegexValidator(
+                    message='Only alphanumeric (A-Z, 0-9) and symbols characters are allowed.', regex='^[\\w\\W]*$')])),
+                ('use_outsourcing', models.CharField(max_length=255, validators=[django.core.validators.RegexValidator(
+                    message='Only alphanumeric (A-Z, 0-9) and symbols characters are allowed.', regex='^[\\w\\W]*$')])),
+                ('description_project', models.TextField(max_length=600, validators=[
+                    django.core.validators.RegexValidator(
+                        message='Only alphanumeric (A-Z, 0-9) and symbols characters are allowed.',
+                        regex='^[\\w\\W]*$')])),
+                ('business_requirements', models.CharField(max_length=255, validators=[
+                    django.core.validators.RegexValidator(
+                        message='Only alphanumeric (A-Z, 0-9) and symbols characters are allowed.',
+                        regex='^[\\w\\W]*$')])),
+                ('technological_stack', models.CharField(max_length=255, validators=[
+                    django.core.validators.RegexValidator(
+                        message='Only alphanumeric (A-Z, 0-9) and symbols characters are allowed.',
+                        regex='^[\\w\\W]*$')])),
                 ('link_competitor', models.TextField(max_length=255)),
-                ('start_project', models.TextField(max_length=25, validators=[django.core.validators.RegexValidator(message='Only alphabetic (A-Z) characters are allowed.', regex='^[a-zA-Z\\s]*$')])),
-                ('used_outsourcing', models.CharField(max_length=255, validators=[django.core.validators.RegexValidator(message='Only alphanumeric (A-Z, 0-9) and symbols characters are allowed.', regex='^[\\w\\W]*$')])),
+                ('start_project', models.TextField(max_length=25, validators=[
+                    django.core.validators.RegexValidator(message='Only alphabetic (A-Z) characters are allowed.',
+                                                          regex='^[a-zA-Z\\s]*$')])),
+                ('used_outsourcing', models.CharField(max_length=255, validators=[django.core.validators.RegexValidator(
+                    message='Only alphanumeric (A-Z, 0-9) and symbols characters are allowed.', regex='^[\\w\\W]*$')])),
                 ('employees', models.ManyToManyField(related_name='companies_po', to=settings.AUTH_USER_MODEL)),
             ],
             options={

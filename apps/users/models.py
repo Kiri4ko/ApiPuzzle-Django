@@ -5,7 +5,7 @@ from django.core.validators import MinLengthValidator
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
-from apps.auth_reg.validators import validate_generic_latin
+from apps.common.general_validators import validate_generic_latin
 
 
 # User manager class
