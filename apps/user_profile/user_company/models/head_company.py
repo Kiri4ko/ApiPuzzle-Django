@@ -12,6 +12,7 @@ from apps.auth_reg.validators import (
 
 # Create model head company.
 class HeadCompany(models.Model):
+    #  Currency selection
     USD = 'USD'
     EUR = 'EUR'
     CURRENCIES = [
@@ -50,12 +51,12 @@ class HeadCompany(models.Model):
     contact_expert = models.CharField(max_length=255, validators=[validate_generic_alphanumeric_symbols])
     links_case = models.TextField(max_length=600)
     client_desc = models.TextField(max_length=600, name='client_describe')
-    employees = models.ManyToManyField(User, related_name='companies')
+    employees = models.ManyToManyField(User, related_name='companies_head')
 
     def __repr__(self):
         return self.company_name
 
     class Meta:
         ordering = ('company_name',)
-        verbose_name = 'Company'
-        verbose_name_plural = 'Companies'
+        verbose_name = 'Head company'
+        verbose_name_plural = 'Head companies'
