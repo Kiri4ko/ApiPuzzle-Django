@@ -2,6 +2,8 @@ from apps.users.models import User
 from django.db import models
 from apps.auth_reg.validators import (
     validate_company_name, validate_select_industries_name,
+)
+from apps.common.general_validators import (
     validate_generic_alphanumeric_symbols, validate_generic_latin,
 )
 
