@@ -122,6 +122,8 @@ REST_FRAMEWORK = {
     'DATETIME_INPUT_FORMATS': ['%d.%m.%Y %H:%M:%S', '%Y.%m.%d', '%Y-%m-%d'],
     'DATE_FORMAT': '%m.%d.%Y',
     'DATE_INPUT_FORMATS': ['%d.%m.%Y', '%Y.%m.%d', '%Y-%m-%d'],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5,
 }
 
 SIMPLE_JWT = {
