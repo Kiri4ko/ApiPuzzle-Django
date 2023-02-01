@@ -118,9 +118,10 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ],
-    'DATETIME_FORMAT': "%m/%d/%Y %H:%M:%S",
-    'DATE_FORMAT': "%m.%d.%Y",
-    'DATE_INPUT_FORMATS': ['%d.%m.%Y'],
+    'DATETIME_FORMAT': '%m.%d.%Y %H:%M:%S',
+    'DATETIME_INPUT_FORMATS': ['%d.%m.%Y %H:%M:%S', '%Y.%m.%d', '%Y-%m-%d'],
+    'DATE_FORMAT': '%m.%d.%Y',
+    'DATE_INPUT_FORMATS': ['%d.%m.%Y', '%Y.%m.%d', '%Y-%m-%d'],
 }
 
 SIMPLE_JWT = {
@@ -226,10 +227,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-DATE_FORMAT = 'd-m-Y'
-
-DATE_INPUT_FORMATS = ['%d-%m-%Y']
-
+DATE_FORMAT = '%d.%m.%Y'
+SHORT_DATE_FORMAT = '%d.%m.%Y'
+DATE_INPUT_FORMATS = ['%d.%m.%Y', '%Y.%m.%d', '%Y-%m-%d']
+DATETIME_INPUT_FORMATS = ['%d.%m.%Y %H:%M:%S', '%Y.%m.%d', '%Y-%m-%d']
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'

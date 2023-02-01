@@ -14,6 +14,7 @@ class HeadCompanySerializer(serializers.ModelSerializer):
         ]
 
 
+# Create class POCompanySerializer
 class POCompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = po_company.POCompany
