@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 from rest_framework import serializers
 from PIL import Image
+from apps.user_profile.user_company.models.choices import IndustryChoice
 
 
 # Password validation
@@ -46,6 +47,17 @@ def validate_image_resolution(image):
         if width != 300 or height != 300:
             raise ValidationError(
                 f"Image resolution should be at 300x300. Got {width}x{height}"
+            )
+
+
+#  List industries validation
+def validate_list_industry(data):
+    str_data = ','.join(data.split(', '))
+    list_data = str_data.split(',')
+    for industry in list_data:
+        if industry not in [check[1] for check in IndustryChoice.INDUSTRIES]:
+            raise ValidationError(
+                f"'{industry}' is not a valid choice."
             )
 
 
