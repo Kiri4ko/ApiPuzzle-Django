@@ -6,8 +6,8 @@ from .models import head_company, po_company
 @admin.register(head_company.HeadCompany)
 class HeadCompanyAdmin(admin.ModelAdmin):
     fields = (
-        'id', 'company_name', 'logo', 'website', 'tagline', 'industry',
-        'software_stack', 'select_industries', 'short_description', 'full_description',
+        'id', 'company_name', 'logo', 'website', 'tagline', 'client_industry',
+        'software_stack', 'industry_choice', 'short_description', 'full_description',
         'average_hourly_rate', 'minimum_project_budget', 'team_size', 'location', 'foundation_date',
         'clients_focus', 'contact_marketing', 'contact_expert', 'links_case',
         'client_describe', 'employees',
