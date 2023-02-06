@@ -49,6 +49,8 @@ class HeadCompany(models.Model):
     links_case = models.TextField(max_length=600)
     client_desc = models.TextField(max_length=600, name='client_describe')
     employees = models.ManyToManyField(User, related_name='companies_head')
+    owner = models.OneToOneField(User, on_delete=models.DO_NOTHING, related_name='owner_company')
+    is_active = models.BooleanField(default=False)  # Activation status company
 
     def __repr__(self):
         return self.company_name
