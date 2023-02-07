@@ -16,6 +16,19 @@ class ProjectSerializer(serializers.ModelSerializer):
             'user': {'read_only': True},
         }
 
+    #  Validation unique project name
+    def validate_project_name(self, value):
+        request = self.context.get("request")
+        user_id = request.user.id
+        existing_project = Project.objects.filter(
+            project_name=value, user=user_id
+        )
+        if existing_project.exists():
+            raise serializers.ValidationError(
+                f'A project with this name already exists for the {request.user.full_name}.'
+            )
+        return value
+
     #  Create company id based on user id
     def create(self, validated_data):
         user = User.objects.get(id=self.context['request'].user.id)

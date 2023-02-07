@@ -1,10 +1,11 @@
 from django.db import models
 from ..user_profile.user_company.models.head_company import HeadCompany
 from ..users.models import User
+from .validators import validate_project_name
 
 
 class Project(models.Model):
-    project_name = models.CharField(max_length=100)
+    project_name = models.CharField(max_length=100, validators=[validate_project_name])
     company_head = models.ForeignKey(
         HeadCompany, on_delete=models.SET_NULL, related_name='project_head', null=True
     )
