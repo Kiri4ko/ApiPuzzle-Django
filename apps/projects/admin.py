@@ -4,5 +4,8 @@ from apps.projects.models import Project
 
 
 @admin.register(Project)
-class MyProjectAdmin(admin.ModelAdmin):
-    pass
+class ProjectAdmin(admin.ModelAdmin):
+    fields = (
+        'id', 'project_name', 'company_head', 'company_po', 'user',
+    )
+    readonly_fields = ('id',)
