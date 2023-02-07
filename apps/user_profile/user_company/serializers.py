@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import head_company, po_company
+from .models.head_company import HeadCompany
+from .models.po_company import POCompany
 
 
 # Create class HeadCompanySerializer
@@ -7,7 +8,7 @@ class HeadCompanySerializer(serializers.ModelSerializer):
     is_active = serializers.BooleanField(default=False, read_only=True)
 
     class Meta:
-        model = head_company.HeadCompany
+        model = HeadCompany
         fields = [
             'id', 'company_name', 'logo', 'website', 'tagline', 'client_industry', 'software_stack', 'industry_choice',
             'short_description', 'full_description', 'average_hourly_rate', 'currency_rate', 'minimum_project_budget',
@@ -21,7 +22,7 @@ class POCompanySerializer(serializers.ModelSerializer):
     is_active = serializers.BooleanField(default=False, read_only=True)
 
     class Meta:
-        model = po_company.POCompany
+        model = POCompany
         fields = [
             'id', 'company_name', 'company_size', 'industry_choice', 'development_team',
             'use_outsourcing', 'description_project', 'business_requirements',

@@ -1,9 +1,10 @@
 from django.contrib import admin
 
-from .models import head_company, po_company
+from .models.head_company import HeadCompany
+from .models.po_company import POCompany
 
 
-@admin.register(head_company.HeadCompany)
+@admin.register(HeadCompany)
 class HeadCompanyAdmin(admin.ModelAdmin):
     fields = (
         'id', 'company_name', 'logo', 'website', 'tagline', 'client_industry',
@@ -16,7 +17,7 @@ class HeadCompanyAdmin(admin.ModelAdmin):
     filter_horizontal = ['employees']
 
 
-@admin.register(po_company.POCompany)
+@admin.register(POCompany)
 class POCompanyAdmin(admin.ModelAdmin):
     fields = (
         'id', 'company_name', 'company_size', 'industry_choice', 'development_team',

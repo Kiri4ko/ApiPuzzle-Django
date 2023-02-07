@@ -32,7 +32,7 @@ class POCompany(models.Model):
     link_competitor = models.TextField(max_length=255)
     start_project = models.CharField(max_length=19, choices=ProjectStart.TIMESTART)
     used_outsourcing = models.CharField(max_length=255, validators=[validate_generic_alphanumeric_symbols])
-    owner = models.OneToOneField(User, on_delete=models.SET('owner removed'), related_name='company_po')
+    owner = models.OneToOneField(User, on_delete=models.SET_NULL, related_name='company_po', null=True)
     is_active = models.BooleanField(default=False)  # Activation status company
 
     def __repr__(self):
